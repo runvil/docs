@@ -22,12 +22,13 @@ docs  ──►  mdbind  ──►  framework  ──►  libs
 ## Build
 
 ```sh
-go run ./cmd/docs
+go run ./cmd/docs            # root-relative build (local preview)
+go run ./cmd/docs --base /docs/   # build for the /docs/ deployment
 ```
 
 The output is written to `site/` — a complete static website ready to serve
-from any static host. Links are generated for the deployment base (`/docs/` by
-default); use `--base /` to build a root-relative copy for local preview.
+from any static host. The base path follows the Runvil precedence convention:
+`--base` flag > `DOCS_BASE` environment variable > `/` default.
 
 ## Deploy
 

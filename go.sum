@@ -1,6 +1,6 @@
 github.com/runvil/framework v0.1.0 h1:uofbfkDOU88HbSR6zRy4zaPcZz97CSNnKw2/EM8qjcE=
 github.com/runvil/framework v0.1.0/go.mod h1:GNMICGfl4hphfgTcXTsf0V+STtcBOzIbo5+1ZGyTPTY=
-github.com/runvil/mdbind v0.2.0 h1:aDw9olyvey9sx57zcF6JD2Cd0RCylhZE1QtzFsnJi7I=
-github.com/runvil/mdbind v0.2.0/go.mod h1:UOl8Snt7l+78sOXnrhFADgZYHC9flS7U6NHBvYNY6lc=
+github.com/runvil/mdbind v0.2.1 h1:wdfkczOZgjt381dzPjTZ15Lcj9P2pGa9lGVV9OxnPwI=
+github.com/runvil/mdbind v0.2.1/go.mod h1:UOl8Snt7l+78sOXnrhFADgZYHC9flS7U6NHBvYNY6lc=
 github.com/yuin/goldmark v1.8.5 h1:r6N5afV5qj/5S4UTch8agZHJ8UxNCMwX7WjkkJam2NA=
 github.com/yuin/goldmark v1.8.5/go.mod h1:ip/1k0VRfGynBgxOz0yCqHrbZXhcjxyuS66Brc7iBKg=

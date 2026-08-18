@@ -2,7 +2,7 @@ module github.com/runvil/docs
 
 go 1.22
 
-require github.com/runvil/mdbind v0.2.0
+require github.com/runvil/mdbind v0.2.1
 
 require (
 	github.com/runvil/framework v0.1.0 // indirect
