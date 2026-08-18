@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "stable"
+      - name: Format
+        run: test -z "$(gofmt -l .)"
+      - name: Vet
+        run: go vet ./...
+      - name: Test
+        run: go test ./...
+      - name: Build site
+        run: go run ./cmd/docs
+      - name: Verify site
+        run: |
+          test -f site/index.html
+          test -f site/chapters/introduction/index.html
+          test -f site/chapters/framework/index.html
+          test -f site/chapters/libraries/index.html
+          test -f site/chapters/site-builder/index.html
+          test -f site/chapters/ecosystem/index.html
+          test -f site/assets/mdbind.css
