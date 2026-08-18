@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Runvil Documentation</title>
+<title>The Libraries — Runvil Documentation</title>
 <link rel="stylesheet" href="/docs/assets/mdbind.css">
 <style>:root{--base-1: #fdfdfb;--base-1-content: #1a1a1a;--base-2: #f5f2eb;--base-2-content: #666;--base-3: #efece4;--base-3-content: #4a4a4a;--primary: #7c3aed;--primary-content: #ffffff;--secondary: #4a8f7a;--secondary-content: #ffffff;--accent: #b45309;--accent-content: #ffffff;--ghost: #e9e6dc;--ghost-content: #666;--neutral: #e3e0d8;--neutral-content: #666;--success: #15803d;--success-content: #ffffff;--info: #0d9488;--info-content: #ffffff;--warning: #f59e0b;--warning-content: #ffffff;--error: #b91c1c;--error-content: #ffffff;}:root[data-theme="dark"]{--base-1: #17171a;--base-1-content: #e6e4dd;--base-2: #202024;--base-2-content: #9a968b;--base-3: #2a2a30;--base-3-content: #c6c2b8;--primary: #a78bfa;--primary-content: #1e1b4b;--secondary: #7fc99d;--secondary-content: #07130b;--accent: #f0b429;--accent-content: #241a00;--ghost: #26262b;--ghost-content: #9a968b;--neutral: #2e2e34;--neutral-content: #9a968b;--success: #4ade80;--success-content: #0b1f10;--info: #2dd4bf;--info-content: #062a23;--warning: #ffb020;--warning-content: #241a00;--error: #f87171;--error-content: #260a0a;}@media (prefers-color-scheme: dark){:root:not([data-theme]){--base-1: #17171a;--base-1-content: #e6e4dd;--base-2: #202024;--base-2-content: #9a968b;--base-3: #2a2a30;--base-3-content: #c6c2b8;--primary: #a78bfa;--primary-content: #1e1b4b;--secondary: #7fc99d;--secondary-content: #07130b;--accent: #f0b429;--accent-content: #241a00;--ghost: #26262b;--ghost-content: #9a968b;--neutral: #2e2e34;--neutral-content: #9a968b;--success: #4ade80;--success-content: #0b1f10;--info: #2dd4bf;--info-content: #062a23;--warning: #ffb020;--warning-content: #241a00;--error: #f87171;--error-content: #260a0a;}}</style><script>(function(){var k="runvil-theme",d="auto",t=d;try{t=localStorage.getItem(k)||d}catch(e){}var m=window.matchMedia('(prefers-color-scheme: dark)');function apply(){var dark=t==='dark'||(t==='auto'&&m.matches);var r=document.documentElement;r.dataset.theme=dark?'dark':'light';r.style.colorScheme=dark?'dark':'light';var meta=document.querySelector('meta[name="color-scheme"]');if(meta)meta.content=dark?'dark':'light'}apply();if(m.addEventListener){m.addEventListener('change',function(){if(t==='auto')apply()})}window.runvilTheme={get:function(){return t},set:function(x){t=x;try{localStorage.setItem(k,x)}catch(e){}apply()},toggle:function(){var dark=t==='dark'||(t==='auto'&&m.matches);window.runvilTheme.set(dark?'light':'dark')}};document.addEventListener('click',function(e){var el=e.target&&e.target.closest?e.target.closest('[data-theme-toggle]'):null;if(el)window.runvilTheme.toggle()})})();</script>
 </head>
@@ -33,7 +33,7 @@
     <a href="/docs/framework/"><span class="num">3.</span> The Framework</a>
     
     
-    <a href="/docs/libraries/"><span class="num">4.</span> The Libraries</a>
+    <a href="/docs/libraries/" class="active"><span class="num">4.</span> The Libraries</a>
     
     
     <a href="/docs/site-builder/"><span class="num">5.</span> The Site Builder</a>
@@ -49,10 +49,49 @@
 </aside>
 
   <main>
-    <h1>Runvil Documentation</h1>
-    <p class="author">by Runvil Contributors</p>
-    <p class="lede">A 10-page book assembled from Markdown.</p>
-    <p><a class="start" href="/docs/introduction/">Start reading &rarr;</a></p>
+    
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Home</a><span class="sep">/</span><span class="current">The Libraries</span>
+    </nav>
+    
+    <h1>The Libraries</h1>
+    <article class="chapter"><h1>The Libraries</h1>
+<p><a href="https://github.com/runvil/libs">runvil/libs</a> is the monorepo of shared,
+reusable libraries for the Runvil ecosystem. It is one of the ecosystems Runvil
+<em>integrates</em> rather than re-implements.</p>
+<h2><code>core</code></h2>
+<p>Shared primitives: the common error type pairing a message with a canonical
+exit code, and the <code>ExitCode</code> type itself.</p>
+<pre><code class="language-go">// ExitCode maps to process exit codes used across Runvil applications.
+const (
+    ExitCodeSuccess ExitCode = 0
+    ExitCodeFailure ExitCode = 1
+    ExitCodeUsage   ExitCode = 2
+)
+</code></pre>
+<p>See the specification:
+<a href="https://github.com/runvil/libs/blob/main/docs/specs/RVL-CHBZ4-errors-exit-codes.md">RVL-CHBZ4</a>.</p>
+<h2><code>term</code></h2>
+<p>Terminal I/O and rendering: ANSI styling, colors, and lightweight terminal
+interaction used by the framework's CLI and developer tooling.</p>
+<p>See the specification:
+<a href="https://github.com/runvil/libs/blob/main/docs/specs/RVL-N459G-terminal-io-rendering.md">RVL-N459G</a>.</p>
+<h2>Using the libraries</h2>
+<pre><code class="language-sh">go get github.com/runvil/libs
+</code></pre>
+<pre><code class="language-go">import &quot;github.com/runvil/libs/core&quot;
+
+err := core.FailureError(&quot;something broke&quot;)
+os.Exit(int(err.ExitCode()))
+</code></pre>
+<p>All library requirements are recorded under
+<a href="https://github.com/runvil/libs/tree/main/docs/specs"><code>libs/docs/specs/</code></a> with
+<code>RVL-*</code> SpecIDs.</p>
+</article>
+    <nav class="pager">
+      <a class="prev" href="/docs/framework/">&larr; The Framework</a>
+      <a class="next" href="/docs/site-builder/">The Site Builder &rarr;</a>
+    </nav>
   </main>
 </div>
 

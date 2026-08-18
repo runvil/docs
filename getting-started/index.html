@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Runvil Documentation</title>
+<title>Getting Started — Runvil Documentation</title>
 <link rel="stylesheet" href="/docs/assets/mdbind.css">
 <style>:root{--base-1: #fdfdfb;--base-1-content: #1a1a1a;--base-2: #f5f2eb;--base-2-content: #666;--base-3: #efece4;--base-3-content: #4a4a4a;--primary: #7c3aed;--primary-content: #ffffff;--secondary: #4a8f7a;--secondary-content: #ffffff;--accent: #b45309;--accent-content: #ffffff;--ghost: #e9e6dc;--ghost-content: #666;--neutral: #e3e0d8;--neutral-content: #666;--success: #15803d;--success-content: #ffffff;--info: #0d9488;--info-content: #ffffff;--warning: #f59e0b;--warning-content: #ffffff;--error: #b91c1c;--error-content: #ffffff;}:root[data-theme="dark"]{--base-1: #17171a;--base-1-content: #e6e4dd;--base-2: #202024;--base-2-content: #9a968b;--base-3: #2a2a30;--base-3-content: #c6c2b8;--primary: #a78bfa;--primary-content: #1e1b4b;--secondary: #7fc99d;--secondary-content: #07130b;--accent: #f0b429;--accent-content: #241a00;--ghost: #26262b;--ghost-content: #9a968b;--neutral: #2e2e34;--neutral-content: #9a968b;--success: #4ade80;--success-content: #0b1f10;--info: #2dd4bf;--info-content: #062a23;--warning: #ffb020;--warning-content: #241a00;--error: #f87171;--error-content: #260a0a;}@media (prefers-color-scheme: dark){:root:not([data-theme]){--base-1: #17171a;--base-1-content: #e6e4dd;--base-2: #202024;--base-2-content: #9a968b;--base-3: #2a2a30;--base-3-content: #c6c2b8;--primary: #a78bfa;--primary-content: #1e1b4b;--secondary: #7fc99d;--secondary-content: #07130b;--accent: #f0b429;--accent-content: #241a00;--ghost: #26262b;--ghost-content: #9a968b;--neutral: #2e2e34;--neutral-content: #9a968b;--success: #4ade80;--success-content: #0b1f10;--info: #2dd4bf;--info-content: #062a23;--warning: #ffb020;--warning-content: #241a00;--error: #f87171;--error-content: #260a0a;}}</style><script>(function(){var k="runvil-theme",d="auto",t=d;try{t=localStorage.getItem(k)||d}catch(e){}var m=window.matchMedia('(prefers-color-scheme: dark)');function apply(){var dark=t==='dark'||(t==='auto'&&m.matches);var r=document.documentElement;r.dataset.theme=dark?'dark':'light';r.style.colorScheme=dark?'dark':'light';var meta=document.querySelector('meta[name="color-scheme"]');if(meta)meta.content=dark?'dark':'light'}apply();if(m.addEventListener){m.addEventListener('change',function(){if(t==='auto')apply()})}window.runvilTheme={get:function(){return t},set:function(x){t=x;try{localStorage.setItem(k,x)}catch(e){}apply()},toggle:function(){var dark=t==='dark'||(t==='auto'&&m.matches);window.runvilTheme.set(dark?'light':'dark')}};document.addEventListener('click',function(e){var el=e.target&&e.target.closest?e.target.closest('[data-theme-toggle]'):null;if(el)window.runvilTheme.toggle()})})();</script>
 </head>
@@ -27,7 +27,7 @@
     <a href="/docs/introduction/"><span class="num">1.</span> Introduction</a>
     
     
-    <a href="/docs/getting-started/"><span class="num">2.</span> Getting Started</a>
+    <a href="/docs/getting-started/" class="active"><span class="num">2.</span> Getting Started</a>
     
     
     <a href="/docs/framework/"><span class="num">3.</span> The Framework</a>
@@ -49,10 +49,68 @@
 </aside>
 
   <main>
-    <h1>Runvil Documentation</h1>
-    <p class="author">by Runvil Contributors</p>
-    <p class="lede">A 10-page book assembled from Markdown.</p>
-    <p><a class="start" href="/docs/introduction/">Start reading &rarr;</a></p>
+    
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Home</a><span class="sep">/</span><span class="current">Getting Started</span>
+    </nav>
+    
+    <h1>Getting Started</h1>
+    <article class="chapter"><h1>Getting Started</h1>
+<p>The fastest way into Runvil is the <code>runvil</code> developer tool, which scaffolds a
+project that already composes the ecosystem.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Go toolchain 1.22 or newer — see <a href="https://go.dev/dl/">go.dev/dl</a></li>
+</ul>
+<h2>Install the developer tool</h2>
+<pre><code class="language-sh">go install github.com/runvil/runvil/cmd/runvil@v0.3.0
+</code></pre>
+<h2>Create a project</h2>
+<pre><code class="language-sh">runvil new hello --module example.com/hello
+cd hello
+runvil test
+</code></pre>
+<p>The scaffolded project depends on <code>github.com/runvil/framework</code> and
+<code>github.com/runvil/libs</code>, and <code>runvil test</code> runs its tests through the Go
+toolchain.</p>
+<h2>What you can run</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>runvil version</code></td>
+<td>Print the tool and framework versions.</td>
+</tr>
+<tr>
+<td><code>runvil info</code></td>
+<td>Print environment and project information.</td>
+</tr>
+<tr>
+<td><code>runvil new</code></td>
+<td>Scaffold a new Runvil project.</td>
+</tr>
+<tr>
+<td><code>runvil test</code></td>
+<td>Run the current project's tests.</td>
+</tr>
+</tbody>
+</table>
+<h2>Next steps</h2>
+<ul>
+<li>Read how the <a href="/docs/chapters/framework/">framework</a> composes its packages.</li>
+<li>Explore the <a href="/docs/chapters/libraries/">shared libraries</a>.</li>
+<li>Publish documentation with the <a href="/docs/chapters/site-builder/">site builder</a>.</li>
+</ul>
+</article>
+    <nav class="pager">
+      <a class="prev" href="/docs/introduction/">&larr; Introduction</a>
+      <a class="next" href="/docs/framework/">The Framework &rarr;</a>
+    </nav>
   </main>
 </div>
 

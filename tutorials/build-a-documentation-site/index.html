@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Runvil Documentation</title>
+<title>Build a Documentation Site — Runvil Documentation</title>
 <link rel="stylesheet" href="/docs/assets/mdbind.css">
 <style>:root{--base-1: #fdfdfb;--base-1-content: #1a1a1a;--base-2: #f5f2eb;--base-2-content: #666;--base-3: #efece4;--base-3-content: #4a4a4a;--primary: #7c3aed;--primary-content: #ffffff;--secondary: #4a8f7a;--secondary-content: #ffffff;--accent: #b45309;--accent-content: #ffffff;--ghost: #e9e6dc;--ghost-content: #666;--neutral: #e3e0d8;--neutral-content: #666;--success: #15803d;--success-content: #ffffff;--info: #0d9488;--info-content: #ffffff;--warning: #f59e0b;--warning-content: #ffffff;--error: #b91c1c;--error-content: #ffffff;}:root[data-theme="dark"]{--base-1: #17171a;--base-1-content: #e6e4dd;--base-2: #202024;--base-2-content: #9a968b;--base-3: #2a2a30;--base-3-content: #c6c2b8;--primary: #a78bfa;--primary-content: #1e1b4b;--secondary: #7fc99d;--secondary-content: #07130b;--accent: #f0b429;--accent-content: #241a00;--ghost: #26262b;--ghost-content: #9a968b;--neutral: #2e2e34;--neutral-content: #9a968b;--success: #4ade80;--success-content: #0b1f10;--info: #2dd4bf;--info-content: #062a23;--warning: #ffb020;--warning-content: #241a00;--error: #f87171;--error-content: #260a0a;}@media (prefers-color-scheme: dark){:root:not([data-theme]){--base-1: #17171a;--base-1-content: #e6e4dd;--base-2: #202024;--base-2-content: #9a968b;--base-3: #2a2a30;--base-3-content: #c6c2b8;--primary: #a78bfa;--primary-content: #1e1b4b;--secondary: #7fc99d;--secondary-content: #07130b;--accent: #f0b429;--accent-content: #241a00;--ghost: #26262b;--ghost-content: #9a968b;--neutral: #2e2e34;--neutral-content: #9a968b;--success: #4ade80;--success-content: #0b1f10;--info: #2dd4bf;--info-content: #062a23;--warning: #ffb020;--warning-content: #241a00;--error: #f87171;--error-content: #260a0a;}}</style><script>(function(){var k="runvil-theme",d="auto",t=d;try{t=localStorage.getItem(k)||d}catch(e){}var m=window.matchMedia('(prefers-color-scheme: dark)');function apply(){var dark=t==='dark'||(t==='auto'&&m.matches);var r=document.documentElement;r.dataset.theme=dark?'dark':'light';r.style.colorScheme=dark?'dark':'light';var meta=document.querySelector('meta[name="color-scheme"]');if(meta)meta.content=dark?'dark':'light'}apply();if(m.addEventListener){m.addEventListener('change',function(){if(t==='auto')apply()})}window.runvilTheme={get:function(){return t},set:function(x){t=x;try{localStorage.setItem(k,x)}catch(e){}apply()},toggle:function(){var dark=t==='dark'||(t==='auto'&&m.matches);window.runvilTheme.set(dark?'light':'dark')}};document.addEventListener('click',function(e){var el=e.target&&e.target.closest?e.target.closest('[data-theme-toggle]'):null;if(el)window.runvilTheme.toggle()})})();</script>
 </head>
@@ -44,15 +44,72 @@
     
     <a href="/docs/tutorials/"><span class="num">7.</span> Tutorials</a>
     
+    <a href="/docs/tutorials/build-a-documentation-site/" class="sub active"><span class="num">7.1</span> Build a Documentation Site</a>
+    
+    <a href="/docs/tutorials/build-a-landing-page/" class="sub"><span class="num">7.2</span> Build a Landing Page</a>
+    
+    <a href="/docs/tutorials/deploy-to-github-pages/" class="sub"><span class="num">7.3</span> Deploy to GitHub Pages</a>
+    
     
   </nav>
 </aside>
 
   <main>
-    <h1>Runvil Documentation</h1>
-    <p class="author">by Runvil Contributors</p>
-    <p class="lede">A 10-page book assembled from Markdown.</p>
-    <p><a class="start" href="/docs/introduction/">Start reading &rarr;</a></p>
+    
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Home</a><span class="sep">/</span><a href="/docs/tutorials/">Tutorials</a><span class="sep">/</span><span class="current">Build a Documentation Site</span>
+    </nav>
+    
+    <h1>Build a Documentation Site</h1>
+    <article class="chapter"><h1>Build a Documentation Site</h1>
+<p>This tutorial turns a folder of Markdown into a book-shaped documentation
+site, shaped with <code>runvil.yaml</code> so no project-specific command is needed.</p>
+<h2>1. Scaffold the manuscript</h2>
+<p><code>runvil new</code> scaffolds a Go module, but a site needs content. Create a
+<code>manuscript/</code> directory at the module root:</p>
+<pre><code class="language-sh">mkdir manuscript
+</code></pre>
+<h2>2. Author chapters</h2>
+<p>Each Markdown file is a chapter, ordered by numeric filename prefix:</p>
+<pre><code class="language-text">manuscript/
+  01-introduction.md
+  02-getting-started.md
+  03-reference.md
+</code></pre>
+<p>Longer sections become chapters with subchapters: put a directory in
+manuscript/ and mdbind numbers its files as <code>N.M</code> sections, served at
+<code>/tutorials/{chapter}/{sub}/</code>. An optional <code>index.md</code> inside the directory
+becomes the chapter page; without one, the chapter page lists its sections
+automatically.</p>
+<h2>3. Shape the site with runvil.yaml</h2>
+<p>Configure title, navigation, footer, base path, and the theme palette in a
+single file — no <code>cmd/</code> entrypoint needed:</p>
+<pre><code class="language-yaml"># runvil.yaml
+title: My Docs
+author: Runvil Contributors
+base: /docs/
+nav:
+  - text: Runvil
+    url: /
+theme:
+  light:
+    primary: &quot;#7c3aed&quot;
+  dark:
+    primary: &quot;#a78bfa&quot;
+</code></pre>
+<h2>4. Build</h2>
+<p><code>runvil build</code> detects <code>manuscript/</code>, reads <code>runvil.yaml</code>, and delegates to the
+mdbind site builder:</p>
+<pre><code class="language-sh">runvil build
+</code></pre>
+<p>The command prints every created path, produces a table of contents with
+subchapter sections, breadcrumbs, and prev/next navigation, and ships a
+light/dark theme switcher driven entirely by the configured palette.</p>
+</article>
+    <nav class="pager">
+      <a class="prev" href="/docs/tutorials/">&larr; Tutorials</a>
+      <a class="next" href="/docs/tutorials/build-a-landing-page/">Build a Landing Page &rarr;</a>
+    </nav>
   </main>
 </div>
 
