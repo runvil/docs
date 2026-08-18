@@ -31,6 +31,11 @@ func main() {
 		Title:    "Runvil Documentation",
 		Author:   "Runvil Contributors",
 		BasePath: basePath,
+		NavLinks: []book.Link{
+			{Text: "Runvil", URL: "/"},
+			{Text: "Ecosystem", URL: "https://github.com/runvil"},
+		},
+		FooterText: "Runvil Documentation — MIT License",
 	})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "docs:", err)
