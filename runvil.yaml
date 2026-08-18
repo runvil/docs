@@ -15,11 +15,3 @@ nav:
     url: https://github.com/runvil
 theme:
   default: auto
-  light:
-    primary: "#7c3aed"
-    primary-content: "#ffffff"
-    accent: "#b45309"
-  dark:
-    primary: "#a78bfa"
-    primary-content: "#1e1b4b"
-    accent: "#f0b429"
