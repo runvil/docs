@@ -5,7 +5,8 @@
 | SpecID      | RVD-P3TVZ                                   |
 | Title       | Documentation Build & CI                   |
 | Status      | Draft                                       |
-| Version     | 0.2.0                                       |
+| Last updated | 2026-08-18                                  |
+| Changes      | migrate CI to runvil build + runvil.yaml; initial specification                                      |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Documentation — Build                       |

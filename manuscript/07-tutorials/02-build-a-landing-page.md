@@ -3,7 +3,7 @@
 A landing page is more custom than a book: hero, features, a repository grid,
 and a footer. The framework's static site generator (`framework/web/ssg`)
 composes it from components with scoped styles, and `runvil build` runs the
-project's generator through the `cmd/site` convention.
+project's generator through the the web/ssg generator convention.
 
 ## 1. Create the entrypoint
 
@@ -55,8 +55,8 @@ Asset("assets/theme.css", ui.ThemeModeVarsCSS+"\n"+ui.ThemeToggleCSS)
 
 ## 3. Build with runvil
 
-No `manuscript/` directory means `runvil build` falls back to the `cmd/site`
-shape and runs `go run ./cmd/site` with the output directory:
+No `manuscript/` directory means `runvil build` falls back to the the web/ssg generator
+shape and runs `runvil build` with the output directory:
 
 ```sh
 runvil build --output .

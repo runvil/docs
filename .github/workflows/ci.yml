@@ -21,15 +21,15 @@ jobs:
       - name: Test
         run: go test ./...
       - name: Build site
-        run: go run github.com/runvil/runvil/cmd/runvil@v0.3.0 build
+        run: go run github.com/runvil/runvil/cmd/runvil@v0.4.0 build
       - name: Verify site
         run: |
           test -f site/index.html
-          test -f site/chapters/introduction/index.html
-          test -f site/chapters/framework/index.html
-          test -f site/chapters/libraries/index.html
-          test -f site/chapters/site-builder/index.html
-          test -f site/chapters/ecosystem/index.html
-          test -f site/chapters/tutorials/index.html
-          test -f site/chapters/tutorials/01-build-a-documentation-site/index.html
+          test -f site/getting-started/index.html
+          test -f site/framework/index.html
+          test -f site/libraries/index.html
+          test -f site/site-builder/index.html
+          test -f site/ecosystem/index.html
+          test -f site/tutorials/index.html
+          test -f site/tutorials/01-build-a-documentation-site/index.html
           test -f site/assets/mdbind.css

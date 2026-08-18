@@ -30,7 +30,7 @@ created, err := book.Build(book.Config{
 ```
 
 Sub-directories in the manuscript become chapters with `N.M` subchapters
-served at `/chapters/{chapter}/{sub}/`; every chapter page carries a
+served at `/tutorials/{chapter}/{sub}/`; every chapter page carries a
 breadcrumb trail back to Home, and the sidebar expands the active section's
 subchapters. This documentation site itself dogfoods the builder.
 

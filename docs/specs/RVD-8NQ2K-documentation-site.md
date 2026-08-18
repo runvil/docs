@@ -5,7 +5,8 @@
 | SpecID      | RVD-8NQ2K                                   |
 | Title       | Runvil Documentation Site — Initial Specification |
 | Status      | Draft                                       |
-| Version     | 0.4.0                                       |
+| Last updated | 2026-08-18                                  |
+| Changes      | tutorials subchapters, runvil build + runvil.yaml (DOC-SITE-005..012); page chrome, theme switcher, palette override; base-path deployment; initial specification                                      |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Documentation                              |
@@ -46,7 +47,7 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 | ----------- | ------------------------------------------------------------- | -------- |
 | DOC-SITE-001 | Content lives in `manuscript/**/*.md` in reading order, with directories forming `N.M` subchapters. | Must     |
 | DOC-SITE-002 | The book covers framework, libs, runvil, mdbind, docs, and tutorials. | Must     |
-| DOC-SITE-003 | In-book links use site paths under the deployment base (`/docs/chapters/...`). | Must     |
+| DOC-SITE-003 | In-book links use site paths under the deployment base (`/docs/tutorials/...`). | Must     |
 | DOC-SITE-004 | Cross-repository links use GitHub URLs.                       | Must     |
 
 ### 5.2 Generation

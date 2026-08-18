@@ -24,8 +24,8 @@ manuscript/
 ```
 
 Longer sections become chapters with subchapters: put a directory in
-`manuscript/` and mdbind numbers its files as `N.M` sections, served at
-`/chapters/{chapter}/{sub}/`. An optional `index.md` inside the directory
+manuscript/ and mdbind numbers its files as `N.M` sections, served at
+`/tutorials/{chapter}/{sub}/`. An optional `index.md` inside the directory
 becomes the chapter page; without one, the chapter page lists its sections
 automatically.
 

@@ -35,11 +35,11 @@ Set the Pages source to `gh-pages` in the repository settings.
 
 ## 3. Verify
 
-Curl the live URL to confirm the chapters, assets, and breadcrumbs resolve:
+Curl the live URL to confirm the tutorials, assets, and breadcrumbs resolve:
 
 ```sh
 curl -sfI https://runvil.github.io/docs/ | head -1
-curl -sf  https://runvil.github.io/docs/chapters/tutorials/ | grep -o '<title>[^<]*</title>'
+curl -sf  https://runvil.github.io/docs/tutorials/ | grep -o '<title>[^<]*</title>'
 ```
 
 Every generated link carries the configured base path (`/docs/...`), so the

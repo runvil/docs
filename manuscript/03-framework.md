@@ -32,7 +32,7 @@ a static-site export (`web.Export`) that writes each page as
 
 ```go
 router := web.NewRouter()
-router.Get("/chapters/{slug}", handler)
+router.Get("/{slug}", handler)
 router.Static("/assets", "assets")
 ```
 

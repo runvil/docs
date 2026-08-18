@@ -29,5 +29,5 @@ workers and desktop applications.
 | [runvil/runvil](https://github.com/runvil/runvil) | The developer tool: scaffolding, testing, project information. |
 | [runvil/mdbind](https://github.com/runvil/mdbind) | The site builder: Markdown folders into book-shaped websites. |
 
-Continue to [Getting Started](/chapters/getting-started) to build your first
+Continue to [Getting Started](/getting-started) to build your first
 Runvil application.
