@@ -45,7 +45,7 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 | ----------- | ------------------------------------------------------------- | -------- |
 | DOC-SITE-001 | Content lives in `manuscript/*.md` in reading order.          | Must     |
 | DOC-SITE-002 | The book covers framework, libs, runvil, mdbind, and docs.    | Must     |
-| DOC-SITE-003 | In-book links use site paths (`/chapters/...`).               | Must     |
+| DOC-SITE-003 | In-book links use site paths under the deployment base (`/docs/chapters/...`). | Must     |
 | DOC-SITE-004 | Cross-repository links use GitHub URLs.                       | Must     |
 
 ### 5.2 Generation
@@ -55,6 +55,7 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 | DOC-SITE-005 | The site is generated through `book.Build`, not internal APIs.| Must     |
 | DOC-SITE-006 | The generated site includes a table of contents and chapters.| Must     |
 | DOC-SITE-007 | Generation is deterministic for identical manuscripts.        | Must     |
+| DOC-SITE-008 | Generated links resolve under a configurable base path, deploying at `runvil.github.io/docs/`. | Must |
 
 ## 6. Non-Functional Requirements
 

@@ -14,13 +14,15 @@ import (
 func main() {
 	input := flag.String("input", "manuscript", "manuscript directory")
 	output := flag.String("output", "site", "output directory")
+	base := flag.String("base", "/docs/", "URL base the site is served under; use / for root serving")
 	flag.Parse()
 
 	created, err := book.Build(book.Config{
-		Input:  *input,
-		Output: *output,
-		Title:  "Runvil Documentation",
-		Author: "Runvil Contributors",
+		Input:    *input,
+		Output:   *output,
+		Title:    "Runvil Documentation",
+		Author:   "Runvil Contributors",
+		BasePath: *base,
 	})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "docs:", err)

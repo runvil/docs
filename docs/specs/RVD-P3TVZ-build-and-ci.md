@@ -43,6 +43,7 @@ to reflect the source of truth.
 | DOC-BLD-001 | `go run ./cmd/docs` builds the manuscript into `./site`.          | Must     |
 | DOC-BLD-002 | The site build uses only mdbind's public package surface.         | Must     |
 | DOC-BLD-003 | The build reports created files deterministically.                | Must     |
+| DOC-BLD-006 | The build accepts a base path (`--base`) and defaults to `/docs/`, the deployment location. | Must |
 
 ### 5.2 CI
 

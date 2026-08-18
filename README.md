@@ -26,7 +26,14 @@ go run ./cmd/docs
 ```
 
 The output is written to `site/` — a complete static website ready to serve
-from any static host.
+from any static host. Links are generated for the deployment base (`/docs/` by
+default); use `--base /` to build a root-relative copy for local preview.
+
+## Deploy
+
+The site publishes to GitHub Pages from the `gh-pages` branch and is served at
+`https://runvil.github.io/docs/`, linked from the
+[Runvil landing page](https://runvil.github.io/).
 
 ## Prerequisites
 
