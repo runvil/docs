@@ -37,7 +37,18 @@ func main() {
 			{Text: "Ecosystem", URL: "https://github.com/runvil"},
 		},
 		FooterText: "Runvil Documentation — MIT License",
-		Theme:      &web.Theme{},
+		Theme: &web.Theme{
+			Light: web.Palette{
+				Primary:        "#7c3aed",
+				PrimaryContent: "#ffffff",
+				Accent:         "#b45309",
+			},
+			Dark: web.Palette{
+				Primary:        "#a78bfa",
+				PrimaryContent: "#1e1b4b",
+				Accent:         "#f0b429",
+			},
+		},
 	})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "docs:", err)
