@@ -5,7 +5,7 @@
 | SpecID      | RVD-8NQ2K                                   |
 | Title       | Runvil Documentation Site — Initial Specification |
 | Status      | Draft                                       |
-| Version     | 0.1.0                                       |
+| Version     | 0.2.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Documentation                              |
@@ -57,6 +57,7 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 | DOC-SITE-007 | Generation is deterministic for identical manuscripts.        | Must     |
 | DOC-SITE-008 | Generated links resolve under a configurable base path, deploying at `runvil.github.io/docs/`. | Must |
 | DOC-SITE-009 | Pages render mdbind's navbar, sidebar, and footer chrome.         | Must |
+| DOC-SITE-010 | Pages render the light/dark theme switcher (system scheme by default). | Must |
 
 ## 6. Non-Functional Requirements
 

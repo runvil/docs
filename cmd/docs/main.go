@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/runvil/framework/web"
 	"github.com/runvil/mdbind/book"
 )
 
@@ -36,6 +37,7 @@ func main() {
 			{Text: "Ecosystem", URL: "https://github.com/runvil"},
 		},
 		FooterText: "Runvil Documentation — MIT License",
+		Theme:      &web.Theme{},
 	})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "docs:", err)
