@@ -8,7 +8,7 @@ engine behind this very documentation site.
 ## Command line
 
 ```sh
-go install github.com/runvil/mdbind/cmd/mdbind@v0.1.0
+go install github.com/runvil/mdbind/cmd/mdbind@v0.5.0
 
 mdbind init          # scaffold a sample manuscript
 mdbind build         # build ./ -> site/
@@ -28,6 +28,11 @@ created, err := book.Build(book.Config{
     Author: "Runvil Contributors",
 })
 ```
+
+Sub-directories in the manuscript become chapters with `N.M` subchapters
+served at `/chapters/{chapter}/{sub}/`; every chapter page carries a
+breadcrumb trail back to Home, and the sidebar expands the active section's
+subchapters. This documentation site itself dogfoods the builder.
 
 ## Specifications
 

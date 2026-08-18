@@ -14,4 +14,4 @@ mdbind.
 
 - The generated site lives in `site/` and must not be edited by hand.
 - The source of truth is the manuscript under `manuscript/`.
-- Build with `go run ./cmd/docs`.
+- Site settings live in `runvil.yaml`; build with `runvil build`.

@@ -5,7 +5,7 @@
 | SpecID      | RVD-8NQ2K                                   |
 | Title       | Runvil Documentation Site — Initial Specification |
 | Status      | Draft                                       |
-| Version     | 0.3.0                                       |
+| Version     | 0.4.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Documentation                              |
@@ -14,8 +14,9 @@
 
 **runvil/docs** hosts the Runvil ecosystem documentation as a single,
 book-shaped website. Its content is a Markdown manuscript assembled by the
-mdbind site builder, making this repository the dogfooding consumer that closes
-the dependency chain `docs -> mdbind -> framework/web -> libs`.
+mdbind site builder and driven by `runvil build`, making this repository the
+dogfooding consumer that closes the dependency chain
+`runvil/docs -> runvil -> mdbind + framework/web + framework/ui -> libs`.
 
 ## 2. Problem Statement
 
@@ -28,8 +29,8 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 ## 3. Goals
 
 - G1 — Provide a single documentation book covering the whole ecosystem.
-- G2 — Author content as an ordered Markdown manuscript.
-- G3 — Generate the site through mdbind's public `book` package.
+- G2 — Author content as an ordered Markdown manuscript with subchapter sections.
+- G3 — Generate the site through `runvil build`, which delegates to mdbind's public `book` package.
 - G4 — Dogfood the full dependency chain end to end.
 
 ## 4. Non-Goals
@@ -43,8 +44,8 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 
 | ID          | Requirement                                                   | Priority |
 | ----------- | ------------------------------------------------------------- | -------- |
-| DOC-SITE-001 | Content lives in `manuscript/*.md` in reading order.          | Must     |
-| DOC-SITE-002 | The book covers framework, libs, runvil, mdbind, and docs.    | Must     |
+| DOC-SITE-001 | Content lives in `manuscript/**/*.md` in reading order, with directories forming `N.M` subchapters. | Must     |
+| DOC-SITE-002 | The book covers framework, libs, runvil, mdbind, docs, and tutorials. | Must     |
 | DOC-SITE-003 | In-book links use site paths under the deployment base (`/docs/chapters/...`). | Must     |
 | DOC-SITE-004 | Cross-repository links use GitHub URLs.                       | Must     |
 
@@ -52,13 +53,14 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 
 | ID          | Requirement                                                   | Priority |
 | ----------- | ------------------------------------------------------------- | -------- |
-| DOC-SITE-005 | The site is generated through `book.Build`, not internal APIs.| Must     |
-| DOC-SITE-006 | The generated site includes a table of contents and chapters.| Must     |
-| DOC-SITE-007 | Generation is deterministic for identical manuscripts.        | Must     |
-| DOC-SITE-008 | Generated links resolve under a configurable base path, deploying at `runvil.github.io/docs/`. | Must |
-| DOC-SITE-009 | Pages render mdbind's navbar, sidebar, and footer chrome.         | Must |
-| DOC-SITE-010 | Pages render the light/dark theme switcher (system scheme by default). | Must |
-| DOC-SITE-011 | The site overrides palette tokens (primary/accent) per mode while the rest fall back to defaults. | Must |
+| DOC-SITE-005 | The site is generated through `runvil build`, which delegates to `book.Build`; no project-specific `cmd` exists. | Must |
+| DOC-SITE-006 | Site settings (title, author, base, nav, footer, palette) live in `runvil.yaml`. | Must |
+| DOC-SITE-007 | The generated site includes a table of contents, subchapter sections, and breadcrumbs. | Must |
+| DOC-SITE-008 | Generation is deterministic for identical manuscripts.        | Must |
+| DOC-SITE-009 | Generated links resolve under a configurable base path, deploying at `runvil.github.io/docs/`. | Must |
+| DOC-SITE-010 | Pages render mdbind's navbar, sidebar, and footer chrome.         | Must |
+| DOC-SITE-011 | Pages render the light/dark theme switcher (system scheme by default). | Must |
+| DOC-SITE-012 | The site overrides palette tokens (primary/accent) per mode while the rest fall back to defaults. | Must |
 
 ## 6. Non-Functional Requirements
 
@@ -68,9 +70,9 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 
 ## 7. Success Criteria
 
-- S1 — `go run ./cmd/docs` produces `site/index.html` and one page per chapter.
-- S2 — Every ecosystem repository is covered by a chapter.
-- S3 — The build imports only public mdbind packages.
+- S1 — `runvil build` produces `site/index.html` and one page per chapter and subchapter.
+- S2 — Every ecosystem repository is covered by a chapter, plus a tutorials section.
+- S3 — The build pipeline imports no project-specific builder.
 
 ## 8. Related Specifications
 
@@ -78,6 +80,7 @@ as one book, authored as plain Markdown and generated with Runvil's own tools.
 | --------- | ----------------------------------------------- |
 | [RVD-P3TVZ](./RVD-P3TVZ-build-and-ci.md)          | Documentation Build & CI           |
 | [RVM-5F9TL](https://github.com/runvil/mdbind/blob/main/docs/specs/RVM-5F9TL-mdbind-site-builder.md) | mdbind Site Builder |
+| [RVN-MPLQ4](https://github.com/runvil/runvil/blob/main/docs/specs/RVN-MPLQ4-project-building.md) | Project Building |
 
 ## 9. References
 

@@ -5,16 +5,17 @@
 | SpecID      | RVD-P3TVZ                                   |
 | Title       | Documentation Build & CI                   |
 | Status      | Draft                                       |
-| Version     | 0.1.0                                       |
+| Version     | 0.2.0                                       |
 | Date        | 2026-08-18                                  |
 | Author      | Runvil Contributors                         |
 | Domain      | Documentation — Build                       |
 
 ## 1. Context
 
-The documentation site is generated from its manuscript by `cmd/docs`, which
-calls mdbind's public `book.Build`. This specification defines how the site is
-built and how CI keeps it correct, reproducible, and verified on every change.
+The documentation site is generated from its manuscript by `runvil build`,
+which reads `runvil.yaml` and delegates to mdbind's public `book.Build`. This
+specification defines how the site is built and how CI keeps it correct,
+reproducible, and verified on every change.
 
 ## 2. Problem Statement
 
@@ -25,9 +26,9 @@ to reflect the source of truth.
 
 ## 3. Goals
 
-- G1 — Provide a single build entry point: `go run ./cmd/docs`.
+- G1 — Provide a single build entry point: `runvil build`.
 - G2 — Keep the site build deterministic and CI-verified.
-- G3 — Restrict imports to public mdbind packages.
+- G3 — Remove project-specific `cmd`, relying on `runvil.yaml` for site settings.
 
 ## 4. Non-Goals
 
@@ -40,17 +41,17 @@ to reflect the source of truth.
 
 | ID         | Requirement                                                       | Priority |
 | ---------- | ----------------------------------------------------------------- | -------- |
-| DOC-BLD-001 | `go run ./cmd/docs` builds the manuscript into `./site`.          | Must     |
-| DOC-BLD-002 | The site build uses only mdbind's public package surface.         | Must     |
+| DOC-BLD-001 | `runvil build` builds the manuscript into `./site` using `runvil.yaml`. | Must |
+| DOC-BLD-002 | The site build uses only mdbind's public package surface (via the devtool); the repository ships no builder code. | Must |
 | DOC-BLD-003 | The build reports created files deterministically.                | Must     |
-| DOC-BLD-006 | The build accepts a base path via `--base` or `DOCS_BASE`, defaulting to `/`; deployment for GitHub Pages passes `--base /docs/` explicitly. | Must |
+| DOC-BLD-006 | The site base is configured by `runvil.yaml` (`/docs/` for GitHub Pages deployment). | Must |
 
 ### 5.2 CI
 
 | ID         | Requirement                                                       | Priority |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | DOC-BLD-004 | CI runs `gofmt`, `go vet ./...`, and `go test ./...`.             | Must     |
-| DOC-BLD-005 | CI builds the site and verifies `site/index.html` and chapter pages exist. | Must |
+| DOC-BLD-005 | CI builds the site and verifies `site/index.html` and chapter/subchapter pages exist. | Must |
 
 ## 6. Non-Functional Requirements
 

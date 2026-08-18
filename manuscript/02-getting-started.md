@@ -10,7 +10,7 @@ project that already composes the ecosystem.
 ## Install the developer tool
 
 ```sh
-go install github.com/runvil/runvil/cmd/runvil@v0.1.0
+go install github.com/runvil/runvil/cmd/runvil@v0.3.0
 ```
 
 ## Create a project
