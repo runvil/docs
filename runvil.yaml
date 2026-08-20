@@ -1,0 +1,17 @@
+# Contents
+#   Sites of this shape are built by `runvil build`, which reads this file,
+#   mutates nothing, and delegates rendering to the mdbind site builder.
+
+title: Runvil Documentation
+author: Runvil Contributors
+base: /docs/
+input: manuscript
+output: site
+footer: Runvil Documentation — MIT License
+nav:
+  - text: Runvil
+    url: /
+  - text: Ecosystem
+    url: https://github.com/runvil
+theme:
+  default: auto
